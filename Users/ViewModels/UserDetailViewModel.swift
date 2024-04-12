@@ -19,8 +19,10 @@ class UserDetailViewModel: ObservableObject {
         APIConfig.shared.fetchData(endpoint: "users/\(id)", method: .get) { (result: Result<User, APIError>) in
             switch result {
             case .success(let user):
-                self.user = user
-                self.isLoading = false
+                DispatchQueue.main.async {
+                    self.user = user
+                    self.isLoading = false
+                }
             case .failure(_):
                 self.isLoading = false
             }

@@ -12,18 +12,17 @@ struct LocationInfo: View {
     let location: Address
     
     var body: some View {
-        GroupBox("Location") {
-            VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) {
+        GroupBox(label: Text("Loaction"), content: {
+            VStack(alignment: .center) {
                 HStack {
                     Text("City:")
                     Text(location.city)
                 }
                 HStack {
-                    Text("Addres:")
+                    Text("Street:")
                     Text(location.street)
                 }
                 HStack {
-                    Text("Apt:")
                     Text(location.suite)
                 }
                 HStack {
@@ -34,7 +33,7 @@ struct LocationInfo: View {
                     Marker("Location", coordinate: CLLocationCoordinate2D(latitude: Double(location.geo.lat)!, longitude: Double(location.geo.lng)!))
                 }
             }
-        }.padding(.horizontal)
+        }).padding(.horizontal)
     }
 }
 

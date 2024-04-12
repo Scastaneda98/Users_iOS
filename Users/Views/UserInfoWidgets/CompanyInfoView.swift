@@ -11,13 +11,13 @@ struct CompanyInfoView: View {
     let company: Company
     
     var body: some View {
-        GroupBox("Company") {
-            VStack(alignment: .leading) {
+        GroupBox(label: Text("Company"), content: {
+            VStack() {
                 Text(company.name)
                 Text(company.catchPhrase)
                 Text(company.bs)
             }
-        }.padding(.horizontal)
+        }).padding(.horizontal)
     }
 }
 

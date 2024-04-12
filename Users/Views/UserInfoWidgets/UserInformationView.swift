@@ -17,7 +17,6 @@ struct UserInformationView: View {
                 .font(.title)
                 .fontWeight(.bold)
             Text(username)
-        }.padding(.horizontal)
-        
+        }.padding(.horizontal).backgroundStyle(.cyan)
     }
 }

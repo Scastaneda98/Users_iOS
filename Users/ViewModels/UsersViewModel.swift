@@ -22,9 +22,10 @@ class UsersViewModel: ObservableObject {
         APIConfig.shared.fetchData(endpoint: "users", method: .get) { (result: Result<[User], APIError>) in
             switch result {
             case .success(let usersResponse):
-                DispatchQueue.main.async {
-                    self.users = usersResponse
-                    self.isLoading = false
+                DispatchQueue.main.async { [self] in
+                    users = usersResponse
+                    validateUserInformation(from: &users)
+                    isLoading = false
                 }
                 
             case .failure(_):
@@ -33,6 +34,12 @@ class UsersViewModel: ObservableObject {
                     self.errorMessage = "Failed to load users. Please try again later."
                 }
             }
+        }
+    }
+    
+    func validateUserInformation(from users: inout [User]) {
+        users.removeAll { user in
+            return user.name.isEmpty || user.email.isEmpty || user.website.isEmpty
         }
     }
 }

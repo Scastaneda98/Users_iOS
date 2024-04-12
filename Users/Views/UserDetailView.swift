@@ -20,9 +20,12 @@ struct UserDetailView: View {
                 ErrorView(message: "User not found")
             }
         }
+        .padding(.top)
         .onAppear{
             userDetailViewModel.getUserById(id: userID)
         }
+        .navigationTitle("User information")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

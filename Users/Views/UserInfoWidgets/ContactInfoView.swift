@@ -13,13 +13,17 @@ struct ContactInfoView: View {
     let website: String
     
     var body: some View {
-        GroupBox("Contact information") {
-            VStack(alignment: .leading) {
+        
+        GroupBox(label: Text("Contact information"), content: {
+            VStack() {
                 Text(email)
                 Text(phone)
                 Text(website)
             }
-        }.padding(.horizontal)
+        }).padding(.horizontal)
     }
 }
 
+#Preview {
+    ContactInfoView(email: "Sincere@april.biz", phone: "1-770-736-8031 x56442", website: "hildegard.org")
+}
